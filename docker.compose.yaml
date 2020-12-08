@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  codeflix_s3:
+    image: lphoward/fake-s3
+    ports:
+      - "4569:4569"
+    volumes:
+      - ".data/fakes3:/fakes3/data"
+    networks:
+      - codeflix_s3
+    volumes:
+      - .data/s3:/fakes3_root
+
+networks:
+  codeflix_s3:
+    driver: bridge
